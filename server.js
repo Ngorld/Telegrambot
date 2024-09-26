@@ -1,5 +1,5 @@
 const TELEGRAM_BOT_TOKEN = "7038053462:AAHh5dzpS55z8eeMq0dG2wHPtKWPx13OSAs";
-const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/`;
+const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 const http = require("http");
 
 const isDomain = (domain) => {
@@ -14,6 +14,17 @@ const getRDAP = async (domain) => {
   const data = await response.json();
 
   return data;
+};
+
+const webhook = async () => {
+  const response = await fetch(`${TELEGRAM_API_URL}/setWebhook?url=https://kingobot-fubx.onrender.com`);
+
+  const data = await response.json();
+  if (data.ok) {
+    console.log("Webhook set successfully:", data);
+  } else {
+    console.log("Failed to set webhook:", data);
+  }
 };
 
 const server = http.createServer(async (req, res) => {
@@ -40,4 +51,5 @@ const server = http.createServer(async (req, res) => {
 const PORT = process.env.PORT || 3005;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  webhook();
 });
