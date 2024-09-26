@@ -1,0 +1,6 @@
+{
+    "com": "https://rdap.verisign.com/com/v1/domain/",
+    "net": "https://rdap.verisign.com/com/v1/domain/",
+    "org": "https://rdap.publicinterestregistry.org/rdap/domain/",
+    "xyz": "https://rdap.centralnic.com/xyz/domain/"
+}
